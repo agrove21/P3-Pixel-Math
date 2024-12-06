@@ -6,7 +6,7 @@ const pixelSchema = new mongoose.Schema({
         required: true,
     },
     design: {
-        type: [[String]],
+        type: [String],
         required: true,  
     },
   });
