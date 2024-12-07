@@ -16,16 +16,11 @@ const PixelGrid = ({
 
   return (
     <div>
-      {/* Color Picker */}
-      <input
-        type="color"
-        value={selectedColor}
-        onChange={(e) => setSelectedColor(e.target.value)}
-      />
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: `repeat(${gridSize}, 20px)`,
+          padding: "20px",
+          gridTemplateColumns: `repeat(${gridSize}, 40px)`,
           gap: "2px",
         }}
       >
@@ -35,8 +30,8 @@ const PixelGrid = ({
             key={index}
             onClick={() => handlePixelClick(index)}
             style={{
-              width: 20,
-              height: 20,
+              width: 40,
+              height: 40,
               backgroundColor: color,
               border: "1px solid #ddd",
               cursor: "pointer",
