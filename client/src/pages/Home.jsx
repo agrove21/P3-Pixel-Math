@@ -5,7 +5,7 @@ function Home() {
     return (
       <div className="min-h-screen flex flex-col items-center p-5 bg-gray-100">
         {/* Header Component */}
-        <Header />
+        {/* <Header /> */}
   
         {/* Logo and Title */}
         <div className="w-full flex justify-start items-center mb-8">
