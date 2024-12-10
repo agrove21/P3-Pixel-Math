@@ -4,17 +4,8 @@ import Header from "../components/Header";
 function Home() {
     return (
       <div className="min-h-screen flex flex-col items-center p-5 bg-gray-100">
-        {/* Header Component */}
-        {/* <Header /> */}
-  
-        {/* Logo and Title */}
-        <div className="w-full flex justify-start items-center mb-8">
-          <img className="w-14" src="/logo.png" alt="PixelMath logo" />
-          <h1 className="text-2xl ml-3">
-            <span className="font-black">PIXEL</span>MATH
-          </h1>
-        </div>
-  
+       
+ 
         {/* Buttons */}
         <div className="flex flex-col items-center mt-10">
           <h2 className="text-xl mb-5">Welcome to PixelMath</h2>

@@ -6,12 +6,15 @@ import Challenge from "./pages/Challenge";
 import Custom from "./pages/Custom";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
 
 function App() {
   return (
     <div className="bg-slate-100 min-h-screen">
+      <ToastContainer />
       <Router>
         <Routes>
           <Route path="/" element={<AuthLayout />}>

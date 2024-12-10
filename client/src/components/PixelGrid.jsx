@@ -10,7 +10,11 @@ const PixelGrid = ({
   const handlePixelClick = (index) => {
     // Change the color of the clicked pixel
     const newPixels = [...pixels];
-    newPixels[index] = selectedColor;
+    if (selectedColor === newPixels[index]) {
+      newPixels[index] = "#f6f6f6";
+    }else{
+      newPixels[index] = selectedColor;
+    }
     setPixels(newPixels);
   };
 

@@ -4,7 +4,7 @@ const http = require("http");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const {
-  ApolloServerPluginDrainHttpServer
+  ApolloServerPluginDrainHttpServer,
 } = require("@apollo/server/plugin/drainHttpServer");
 const { typeDefs, resolvers } = require("./schemas");
 const { auth } = require("./utils/auth");
