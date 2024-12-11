@@ -9,6 +9,7 @@ const {
 const { typeDefs, resolvers } = require("./schemas");
 const { auth } = require("./utils/auth");
 const connectDB = require("./config/connection");
+const path = require("path");
 const app = express();
 const httpServer = http.createServer(app);
 const server = new ApolloServer({
@@ -17,6 +18,12 @@ const server = new ApolloServer({
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 connectDB();
+
+app.use(express.static(path.join(__dirname, "../client/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
+
 const PORT = process.env.PORT || 4000;
 async function startServer() {
   await server.start();
