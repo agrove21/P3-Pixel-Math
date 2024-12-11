@@ -1,15 +1,29 @@
 import { useEffect, useState } from "react";
+import { useMutation, gql } from "@apollo/client";
 import PixelGrid from "../components/PixelGrid";
 import GridControls from "../components/GridControls";
 import ColorPicker from "../components/ColorPicker";
 import ProgressDisplay from "../components/ProgressDisplay";
 import FractionChallenge from "../components/FractionChallenge";
+import { toast } from "react-toastify";
+
+const mutation = gql`
+  mutation AddPixel($name: String!, $design: [String]!) {
+    addPixel(name: $name, design: $design) {
+      _id
+      design
+      name
+    }
+  }
+`;
 
 function Custom() {
   const [gridSize, setGridSize] = useState(10);
   const [pixels, setPixels] = useState(
     Array(gridSize * gridSize).fill("#FFFFFF")
   );
+
+  const [addPixel] = useMutation(mutation);
 
   //Reset the grid
   function resetGrid() {
@@ -23,8 +37,16 @@ function Custom() {
   }
 
   //Save the current grid
-  function saveGrid() {
-    localStorage.setItem("pixels", JSON.stringify(pixels));
+  async function saveGrid() {
+    const name = Date.now().toString();
+    try {
+      const res = await addPixel({ variables: { name, design: pixels } });
+      console.log(res);
+      // localStorage.setItem("pixels", JSON.stringify(pixels));
+      toast("Design saved!", { type: "success", theme: "colored" });
+    } catch (error) {
+      toast("Error saving design", { type: "error", theme: "colored" });
+    }
   }
 
   const [selectedColor, setSelectedColor] = useState("#000000");

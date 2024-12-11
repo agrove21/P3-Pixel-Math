@@ -4,7 +4,7 @@ const { User } = require("../model");
 const jwtSecret = process.env.JWT_SECRET;
 const auth = async ({ req }) => {
   const token = req.headers.authorization
-    ? req.headers.authorization.split(" ").pop().trim()
+    ? req.headers.authorization.split(" ").pop()
     : null;
   if (!token) {
     return null;
@@ -12,11 +12,8 @@ const auth = async ({ req }) => {
   try {
     const { id } = jwt.verify(token, jwtSecret);
     const user = await User.findById(id);
-    console.log("user", user);
     return { user };
   } catch (err) {
-    console.log(err);
-    console.log(token);
     return null;
   }
 };

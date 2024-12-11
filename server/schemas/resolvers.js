@@ -39,7 +39,6 @@ const resolvers = {
       return { token, user };
     },
     addPixel: async (parent, args, context) => {
-      console.log("context", context);
       if (context.user) {
         const pixel = await Pixel.create(args);
         await User.findByIdAndUpdate(
