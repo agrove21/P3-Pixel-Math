@@ -38,7 +38,7 @@ Welcome to Contribute! Fork the repository, create a new branch, and submit a pu
 n/a
 
 ## Deployed Website URL
-<!-- https://tiny-steps-baby-blog.onrender.com/ -->
+https://p3-pixel-math.onrender.com
 
 ## Screenshots
 
