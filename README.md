@@ -41,7 +41,17 @@ n/a
 https://p3-pixel-math.onrender.com
 
 ## Screenshots
+### Log-In
+<img src="assets\Screenshot 2024-12-11 194042.png" width="800px">
 
+### Home Screen
+<img src="assets\Screenshot 2024-12-11 194321.png" width="800px">
+
+### Challenge Page
+<img src="assets\Screenshot 2024-12-11 194405.png" width="800px">
+
+### Library
+<img src="assets\Screenshot 2024-12-11 194724.png" width="800px">
 
 ## Credits
 #### Team Members:
@@ -49,5 +59,5 @@ https://p3-pixel-math.onrender.com
 Ann Hargrove
 https://github.com/agrove21
 
-Gypze
+Gypze Nelson
 https://github.com/gypze
