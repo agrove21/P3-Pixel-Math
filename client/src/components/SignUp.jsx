@@ -26,7 +26,7 @@ function SignUp() {
   }
 
   return (
-    <div className="bg-blue-300 w-4/12 p-2 flex flex-col items-center">
+    <div className="bg-blue-300 w-full md:w-4/12 p-2 flex flex-col items-center">
       <h1 className="text-xl">Sign Up</h1>
       <p>Not yet a Member?</p>
       <form

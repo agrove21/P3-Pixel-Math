@@ -8,3 +8,7 @@ export function decimalToFraction(decimal) {
     return `${numerator / divisor}/${denominator / divisor}`;
   }
   
+  //function to generate a random proper fraction
+  //numerator < denominator
+ //denominator even
+ //hide color picker on challenges

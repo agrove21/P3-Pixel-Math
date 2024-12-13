@@ -3,7 +3,7 @@ import auth from "../utils/auth";
 
 function Header() {
   return (
-    <header className="p-4 text-black flex justify-between items-center">
+    <header className="p-4 text-black flex flex-col md:flex-row justify-between items-center">
       <div className="w-full flex justify-start items-center">
         <img className="w-14" src="/logo.png" alt="PixelMath logo" />
         <h1 className="text-2xl ml-3">

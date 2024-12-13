@@ -18,6 +18,8 @@ function Library() {
 
   if (loading) return <div>Loading...</div>;
 
+  if (!data?.me?.pixels?.length) return <div className="flex items-center justify-center h-96 text-2xl">No designs yet!</div>;
+
   return <div className="flex justify-start flex-wrap">
     <div className="w-[450px]">
 

@@ -11,7 +11,7 @@ function AuthPage() {
         </h1>
       </div>
       <div className="min-h-[85vh] w-full flex items-center justify-center">
-        <div className="w-[80%] border-slate-900 border-2 flex flex-col md:flex-row">
+        <div className="w-full md:w-[80%] border-slate-900 border-2 flex flex-col md:flex-row">
           <LogIn />
           <SignUp />
         </div>
