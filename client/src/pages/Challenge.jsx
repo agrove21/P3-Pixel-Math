@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
 import PixelGrid from "../components/PixelGrid";
 import GridControls from "../components/GridControls";
-import ColorPicker from "../components/ColorPicker";
 import ProgressDisplay from "../components/ProgressDisplay";
 import FractionChallenge from "../components/FractionChallenge";
+import { getRandomDecimal, getRandomColor } from "../utils/mathHelpers";
 import { toast } from "react-toastify";
 
 const mutation = gql`
@@ -18,6 +18,8 @@ const mutation = gql`
 `;
 function Challenge() {
   const [gridSize, setGridSize] = useState(10);
+  const [selectedColor, setSelectedColor] = useState(getRandomColor());
+  const [targetFraction, setTargetFraction] = useState(getRandomDecimal());
   const [pixels, setPixels] = useState(
     Array(gridSize * gridSize).fill("#f6f6f6")
   );
@@ -48,7 +50,11 @@ function Challenge() {
     }
   }
 
-  const [selectedColor, setSelectedColor] = useState("#000000");
+  const newChallenge = () => {
+    setTargetFraction(getRandomDecimal());
+    setSelectedColor(getRandomColor());
+    resetGrid();
+  };
 
   const calculateFraction = (color) => {
     const colorCount = pixels.filter(
@@ -69,22 +75,18 @@ function Challenge() {
       <div className="w-1/3 p-5 bg-white shadow-md">
         <h1 className="text-2xl font-bold mb-4">Your Challenge:</h1>
         <FractionChallenge
-          targetFraction={0.25}
+          targetFraction={targetFraction}
           targetColor={selectedColor}
           calculateDecimal={calculateDecimal}
         />
         <ProgressDisplay
-          targetFraction={0.25}
+          targetFraction={targetFraction}
           color={selectedColor}
           calculateFraction={calculateFraction}
           calculateDecimal={calculateDecimal}
         />
       </div>
       <div className="w-2/3 p-5 flex flex-col items-center">
-        <ColorPicker
-          selectedColor={selectedColor}
-          onColorChange={setSelectedColor}
-        />
         <PixelGrid
           pixels={pixels}
           setPixels={setPixels}
@@ -92,7 +94,11 @@ function Challenge() {
           selectedColor={selectedColor}
           setSelectedColor={setSelectedColor}
         />
-        <GridControls onSave={saveGrid} onReset={resetGrid} />
+        <GridControls
+          onSave={saveGrid}
+          onReset={resetGrid}
+          onNew={newChallenge}
+        />
       </div>
     </div>
   );

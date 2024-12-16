@@ -1,6 +1,4 @@
-
-
-const GridControls = ({ onSave, onReset }) => {
+const GridControls = ({ type = "challenge", onSave, onReset, onNew }) => {
   return (
     <div className="flex justify-center space-x-4 mt-4">
       <button
@@ -15,6 +13,14 @@ const GridControls = ({ onSave, onReset }) => {
       >
         Reset
       </button>
+      {type === "challenge" && (
+        <button
+          onClick={onNew}
+          className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition"
+        >
+          New Challenge
+        </button>
+      )}
     </div>
   );
 };

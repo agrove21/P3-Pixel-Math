@@ -15,7 +15,7 @@ const mutation = gql`
 `;
 
 function LogIn() {
-  const [login, { data }] = useMutation(mutation);
+  const [login] = useMutation(mutation);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -23,12 +23,13 @@ function LogIn() {
       const email = event.target.elements.email.value;
       const password = event.target.elements.password.value;
       const response = await login({ variables: { email, password } });
-      if(data.login.token){
+      if(response.data.login.token){
         auth.login(response.data.login.token);
       }else{
         toast("Invalid email or password", { type: "error", theme: "colored" });
       }
     } catch (error) {
+      console.log(error);
       toast("Invalid email or password", { type: "error", theme: "colored" });
     }
   }

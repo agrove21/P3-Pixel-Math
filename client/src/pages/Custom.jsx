@@ -3,8 +3,8 @@ import { useMutation, gql } from "@apollo/client";
 import PixelGrid from "../components/PixelGrid";
 import GridControls from "../components/GridControls";
 import ColorPicker from "../components/ColorPicker";
+import FractionColors from "../components/FractionColors";
 import ProgressDisplay from "../components/ProgressDisplay";
-import FractionChallenge from "../components/FractionChallenge";
 import { toast } from "react-toastify";
 
 const mutation = gql`
@@ -19,15 +19,18 @@ const mutation = gql`
 
 function Custom() {
   const [gridSize, setGridSize] = useState(10);
+  const [selectedColor, setSelectedColor] = useState("#000000");
   const [pixels, setPixels] = useState(
-    Array(gridSize * gridSize).fill("#FFFFFF")
+    Array(gridSize * gridSize).fill("#f6f6f6")
   );
+  const [reset, setReset] = useState(false);
 
   const [addPixel] = useMutation(mutation);
 
   //Reset the grid
   function resetGrid() {
-    setPixels(Array(gridSize * gridSize).fill("#FFFFFF"));
+    setPixels(Array(gridSize * gridSize).fill("#f6f6f6"));
+    setReset(!reset);
   }
 
   //Update the grid size
@@ -48,8 +51,6 @@ function Custom() {
       toast("Error saving design", { type: "error", theme: "colored" });
     }
   }
-
-  const [selectedColor, setSelectedColor] = useState("#000000");
 
   const calculateFraction = (color) => {
     const colorCount = pixels.filter(
@@ -74,11 +75,9 @@ function Custom() {
           Fill the grid with colors to create a unique design. Experiment with
           different colors and patterns to make your masterpiece!
         </p>
-        <ProgressDisplay
-          targetFraction={0.25}
-          color={selectedColor}
-          calculateFraction={calculateFraction}
-          calculateDecimal={calculateDecimal}
+        <FractionColors 
+        pixels={pixels}
+        reset={reset}
         />
       </div>
 
@@ -95,7 +94,7 @@ function Custom() {
           selectedColor={selectedColor}
           setSelectedColor={setSelectedColor}
         />
-        <GridControls onSave={saveGrid} onReset={resetGrid} />
+        <GridControls type={"design"} onSave={saveGrid} onReset={resetGrid} />
       </div>
     </div>
   );

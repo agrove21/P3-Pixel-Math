@@ -16,7 +16,7 @@ const ProgressDisplay = ({ color, targetFraction, calculateFraction, calculateDe
     <div>
       <button onClick={handleCheck}
       className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-green-600 transition mb-4"
-      >Check Progress</button>
+      >Check Answer</button>
       <p>{feedback}</p>
         <p>
         Fraction of grid filled with{" "}
